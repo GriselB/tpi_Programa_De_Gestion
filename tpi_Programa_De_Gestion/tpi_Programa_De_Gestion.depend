@@ -1,0 +1,10 @@
+# depslib dependency file v1.0
+1748976131 source:c:\users\katy\documents\tpi\tpi_programa_de_gestion\main.cpp
+	<iostream>
+	"funciones.h"
+	"menu.h"
+
+1748976150 c:\users\katy\documents\tpi\tpi_programa_de_gestion\funciones.h
+
+1748976284 c:\users\katy\documents\tpi\tpi_programa_de_gestion\menu.h
+
