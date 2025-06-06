@@ -1,4 +1,8 @@
 #include <iostream>
-#include "funciones.h"
-#include "menu.h"
 
+void cargarNombres(string vec[], int tamanio) {
+    int i;
+    for (i=0; i<tamanio; i++) {
+       cin >> vec[i];
+}
+}

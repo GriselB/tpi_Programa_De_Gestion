@@ -1,6 +1,4 @@
 #include <iostream>
-#include "funciones.h"
-#include "menu.h"
 
 using namespace std;
 
