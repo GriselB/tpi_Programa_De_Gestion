@@ -1,7 +1,7 @@
 #include <iostream>
 #include "menu.h"
 #include "funciones.h"
-#include "marcas.h"
+#include "cargaDatos.h"
 
 using namespace std;
 

@@ -1,5 +1,5 @@
-#ifndef MARCAS_H
-#define MARCAS_H
+#ifndef CARGADATOS_H
+#define CARGADATOS_H
 
 void cargarMarcas(int vec[], int tamanio);
 

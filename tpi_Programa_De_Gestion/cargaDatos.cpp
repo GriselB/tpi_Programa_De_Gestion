@@ -1,4 +1,5 @@
 #include <iostream>
+#include "cargaDatos.h"
 
 using namespace std;
 
