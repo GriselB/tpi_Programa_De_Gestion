@@ -2,10 +2,12 @@
 #include "menu.h"
 #include "funciones.h"
 #include "marcas.h"
+
 using namespace std;
 
 void mostrarMenu() {
-    cout << "MENU PRINCIPAL" << endl;
+    cout << "-- MENU PRINCIPAL --" << endl;
+    cout << endl;
     cout << "1. Cargar lote de marcas" << endl;
     cout << "2. Cargar lote de productos" << endl;
     cout << "3. Cargar lote de formas de pago" << endl;
@@ -17,7 +19,7 @@ void mostrarMenu() {
 
 bool procesarMenu() {
     int opcion, vecMarcas[10];
-    string vecNombresMarcas[10];
+    char vecNombresMarcas[10];
     cin >> opcion;
 
     switch (opcion) {
@@ -63,7 +65,5 @@ void volverAlMenuPrincipal() {
             cout << "Opcion invalida. Intente nuevamente.";
         }
     }
-
-
 }
 

@@ -1,6 +1,8 @@
 #include <iostream>
+#include "funciones.h"
 
-void cargarNombres(string vec[], int tamanio) {
+using namespace std;
+void cargarNombres(char vec[], int tamanio) {
     int i;
     for (i=0; i<tamanio; i++) {
        cin >> vec[i];
