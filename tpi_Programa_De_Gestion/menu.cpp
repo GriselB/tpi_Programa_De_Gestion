@@ -19,7 +19,7 @@ void mostrarMenu() {
 
 bool procesarMenu() {
     int opcion, vecMarcas[10];
-    char vecNombresMarcas[10];
+    string vecNombresMarcas[10];
     cin >> opcion;
 
     switch (opcion) {

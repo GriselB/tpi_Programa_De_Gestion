@@ -1,7 +1,9 @@
 #ifndef FUNCIONES_H
 #define FUNCIONES_H
 
-void cargarNombres(char vec[], int tamanio);
+using namespace std;
+
+void cargarNombres(string nombre[], int tamanio);
 
 #endif
 

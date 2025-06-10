@@ -43,9 +43,9 @@
 
 1749221028 c:\users\katy\documents\tpi\tpi_programa_de_gestion\tpi_programa_de_gestion\funciones.h
 
-1749221129 source:c:\users\katy\documents\tpi\tpi_programa_de_gestion\tpi_programa_de_gestion\main.cpp
+1749473706 source:c:\users\katy\documents\tpi\tpi_programa_de_gestion\tpi_programa_de_gestion\main.cpp
 	<iostream>
-	"menu.cpp"
+	"menu.h"
 
 1749221161 c:\users\katy\documents\tpi\tpi_programa_de_gestion\tpi_programa_de_gestion\menu.cpp
 	<iostream>
@@ -53,7 +53,7 @@
 	"funciones.h"
 	"marcas.h"
 
-1749214327 c:\users\katy\documents\tpi\tpi_programa_de_gestion\tpi_programa_de_gestion\menu.h
+1749221372 c:\users\katy\documents\tpi\tpi_programa_de_gestion\tpi_programa_de_gestion\menu.h
 
 1749220025 c:\users\katy\documents\tpi\tpi_programa_de_gestion\tpi_programa_de_gestion\marcas.h
 
@@ -62,4 +62,10 @@
 	"menu.h"
 	"funciones.h"
 	"marcas.h"
+
+1749480768 source:c:\users\katy\documents\tpi\tpi_programa_de_gestion\tpi_programa_de_gestion\cargadatos.cpp
+	<iostream>
+	"cargaDatos.h"
+
+1749477667 c:\users\katy\documents\tpi\tpi_programa_de_gestion\tpi_programa_de_gestion\cargadatos.h
 

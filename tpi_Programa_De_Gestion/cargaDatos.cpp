@@ -3,12 +3,15 @@
 
 using namespace std;
 
-void cargarMarcas(int vec[], int tamanio) {
+//Hay que buscar una validación, porque cuando pide que ingreses un número e ingresas una letra, lo que hace es que queda en un loop infinito del cout
+void cargarMarcas(int nombre[], int tamanio) {
     int i;
     for (i=0; i<tamanio; i++) {
-       cin >> vec[i];
-       while (vec[i] > 10 || vec[i] == 0) {
+       cin >> nombre[i];
+       while (nombre[i] > 10 || nombre[i] == 0) {
         cout << "No se puede ingresar numeros mayores a 10 o 0"<<endl;
-        cin >> vec[i];
+        cin >> nombre[i];
        }}
 }
+
+
