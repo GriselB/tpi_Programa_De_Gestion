@@ -9,3 +9,14 @@ void cargarNombres(string nombre[], int tamanio) {
        cin >> nombre[i];
 }
 }
+
+void volverAlMenuPrincipal() {
+    int volver = -1;
+    while (volver != 0) {
+        cout << "\nPresione 0 para volver al menu principal: ";
+        cin >> volver;
+        if (volver != 0) {
+            cout << "Opcion invalida. Intente nuevamente.";
+        }
+    }
+}

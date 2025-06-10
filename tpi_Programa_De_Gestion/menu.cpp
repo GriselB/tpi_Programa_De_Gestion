@@ -5,6 +5,10 @@
 
 using namespace std;
 
+string medioPago[10], vecNombresMarcas[10];
+int opcion, vecMarcas[10], tamanio = 10;
+
+
 void mostrarMenu() {
     cout << "-- MENU PRINCIPAL --" << endl;
     cout << endl;
@@ -18,32 +22,46 @@ void mostrarMenu() {
 }
 
 bool procesarMenu() {
-    int opcion, vecMarcas[10];
-    string vecNombresMarcas[10];
     cin >> opcion;
-
+    while(opcion != 1 &&
+          opcion != 2 &&
+          opcion != 3 &&
+          opcion != 4 &&
+          opcion != 5 &&
+          opcion != 0 )
+    {
+        system("cls");
+        mostrarMenu();
+        cin >> opcion;
+    }
+    system("cls");
     switch (opcion) {
         case 1:
             cout << "Cargar marcas, solo numeros del 1 al 10\n";
-            cargarMarcas(vecMarcas,10);
+            cargarMarcas(vecMarcas,tamanio);
             cout << "Los nombres de las marcas\n";
-            cargarNombres(vecNombresMarcas,10);
+            cargarNombres(vecNombresMarcas,tamanio);
+            system("cls");
             break;
         case 2:
-            cout << "\Funcion: Cargar productos\n";
+            cargarFormasPago(vecNombresMarcas, medioPago);
+            system("cls");
             volverAlMenuPrincipal();
             break;
         case 3:
             cout << "\Funcion: Cargar formas de pago\n";
             volverAlMenuPrincipal();
+            system("cls");
             break;
         case 4:
             cout << "\Funcion: Cargar ventas\n";
             volverAlMenuPrincipal();
+            system("cls");
             break;
         case 5:
             cout << "\Funcion: Mostrar reportes\n";
             volverAlMenuPrincipal();
+            system("cls");
             break;
         case 0:
             cout << "Saliendo del programa..." << endl;
@@ -51,19 +69,10 @@ bool procesarMenu() {
         default:
             cout << "Opcion invalida. Intente nuevamente.\n";
             volverAlMenuPrincipal();
+            system("cls");
     }
 
     return false;
 }
 
-void volverAlMenuPrincipal() {
-    int volver = -1;
-    while (volver != 0) {
-        cout << "\nPresione 0 para volver al menu principal: ";
-        cin >> volver;
-        if (volver != 0) {
-            cout << "Opcion invalida. Intente nuevamente.";
-        }
-    }
-}
 
