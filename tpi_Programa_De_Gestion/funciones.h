@@ -1,9 +1,12 @@
 #ifndef FUNCIONES_H
 #define FUNCIONES_H
+#include "structs.h"
 
 using namespace std;
 
-void cargarNombres(string nombre[], int tamanio);
+void cargarNombres(Marca marcas[]);
+void buscarMarcas(Marca marcas[]);
+bool verificarMarcas(Marca marcas[]);
 
 #endif
 

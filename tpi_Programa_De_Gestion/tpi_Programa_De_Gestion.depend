@@ -8,24 +8,23 @@
 
 1748976284 c:\users\katy\documents\tpi\tpi_programa_de_gestion\menu.h
 
-1749083896 source:c:\users\rossi\desktop\tpi_programa_de_gestion\main.cpp
-	<iostream>
-	"funciones.h"
-	"menu.h"
-
-1749086609 c:\users\rossi\desktop\tpi_programa_de_gestion\funciones.h
-
-1748976284 c:\users\rossi\desktop\tpi_programa_de_gestion\menu.h
-
-1749087381 source:c:\users\rossi\desktop\tpi_programa_de_gestion\menu.cpp
+1749473706 source:c:\users\rossi\desktop\tpi_programa_de_gestion\main.cpp
 	<iostream>
 	"menu.h"
-	"funciones.h"
 
-1749084822 source:c:\users\rossi\desktop\tpi_programa_de_gestion\funciones.cpp
+1749566195 c:\users\rossi\desktop\tpi_programa_de_gestion\funciones.h
+
+1749221372 c:\users\rossi\desktop\tpi_programa_de_gestion\menu.h
+
+1749690533 source:c:\users\rossi\desktop\tpi_programa_de_gestion\menu.cpp
+	<iostream>
+	"menu.h"
+	"funciones.h"
+	"cargaDatos.h"
+
+1749580554 source:c:\users\rossi\desktop\tpi_programa_de_gestion\funciones.cpp
 	<iostream>
 	"funciones.h"
-	"menu.h"
 
 1749084822 source:c:\users\katy\documents\tpi\tpi_programa_de_gestion\funciones.cpp
 	<iostream>
@@ -37,11 +36,13 @@
 	"menu.h"
 	"funciones.h"
 
-1749566212 source:c:\users\katy\documents\tpi\tpi_programa_de_gestion\tpi_programa_de_gestion\funciones.cpp
+1750603730 source:c:\users\katy\documents\tpi\tpi_programa_de_gestion\tpi_programa_de_gestion\funciones.cpp
 	<iostream>
 	"funciones.h"
+	"structs.h"
 
-1749566195 c:\users\katy\documents\tpi\tpi_programa_de_gestion\tpi_programa_de_gestion\funciones.h
+1750533366 c:\users\katy\documents\tpi\tpi_programa_de_gestion\tpi_programa_de_gestion\funciones.h
+	"structs.h"
 
 1749473706 source:c:\users\katy\documents\tpi\tpi_programa_de_gestion\tpi_programa_de_gestion\main.cpp
 	<iostream>
@@ -57,15 +58,26 @@
 
 1749220025 c:\users\katy\documents\tpi\tpi_programa_de_gestion\tpi_programa_de_gestion\marcas.h
 
-1749577120 source:c:\users\katy\documents\tpi\tpi_programa_de_gestion\tpi_programa_de_gestion\menu.cpp
+1750533617 source:c:\users\katy\documents\tpi\tpi_programa_de_gestion\tpi_programa_de_gestion\menu.cpp
 	<iostream>
 	"menu.h"
 	"funciones.h"
 	"cargaDatos.h"
+	"structs.h"
 
 1749480768 source:c:\users\katy\documents\tpi\tpi_programa_de_gestion\tpi_programa_de_gestion\cargadatos.cpp
 	<iostream>
 	"cargaDatos.h"
 
-1749576725 c:\users\katy\documents\tpi\tpi_programa_de_gestion\tpi_programa_de_gestion\cargadatos.h
+1750533609 c:\users\katy\documents\tpi\tpi_programa_de_gestion\tpi_programa_de_gestion\cargadatos.h
+	"structs.h"
+
+1749581096 source:c:\users\rossi\desktop\tpi_programa_de_gestion\cargadatos.cpp
+	<iostream>
+	"cargaDatos.h"
+	"funciones.h"
+
+1749576725 c:\users\rossi\desktop\tpi_programa_de_gestion\cargadatos.h
+
+1750533175 c:\users\katy\documents\tpi\tpi_programa_de_gestion\tpi_programa_de_gestion\structs.h
 

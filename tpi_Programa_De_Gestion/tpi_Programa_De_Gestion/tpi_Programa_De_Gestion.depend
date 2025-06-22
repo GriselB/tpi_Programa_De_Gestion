@@ -1,0 +1,45 @@
+# depslib dependency file v1.0
+1749083896 source:c:\users\katy\documents\tpi\tpi_programa_de_gestion\main.cpp
+	<iostream>
+	"funciones.h"
+	"menu.h"
+
+1749213863 c:\users\katy\documents\tpi\tpi_programa_de_gestion\funciones.h
+
+1748976284 c:\users\katy\documents\tpi\tpi_programa_de_gestion\menu.h
+
+1749083896 source:c:\users\rossi\desktop\tpi_programa_de_gestion\main.cpp
+	<iostream>
+	"funciones.h"
+	"menu.h"
+
+1749086609 c:\users\rossi\desktop\tpi_programa_de_gestion\funciones.h
+
+1748976284 c:\users\rossi\desktop\tpi_programa_de_gestion\menu.h
+
+1749087381 source:c:\users\rossi\desktop\tpi_programa_de_gestion\menu.cpp
+	<iostream>
+	"menu.h"
+	"funciones.h"
+
+1749084822 source:c:\users\rossi\desktop\tpi_programa_de_gestion\funciones.cpp
+	<iostream>
+	"funciones.h"
+	"menu.h"
+
+1749084822 source:c:\users\katy\documents\tpi\tpi_programa_de_gestion\funciones.cpp
+	<iostream>
+	"funciones.h"
+	"menu.h"
+
+1749087381 source:c:\users\katy\documents\tpi\tpi_programa_de_gestion\menu.cpp
+	<iostream>
+	"menu.h"
+	"funciones.h"
+
+1749214327 source:c:\users\pc\downloads\tpi_programa_de_gestion\tpi_programa_de_gestion\funciones.cpp
+	<iostream>
+
+1749214327 source:c:\users\pc\downloads\tpi_programa_de_gestion\tpi_programa_de_gestion\main.cpp
+	<iostream>
+

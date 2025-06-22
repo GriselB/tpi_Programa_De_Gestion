@@ -1,22 +1,14 @@
 #include <iostream>
 #include "menu.h"
 #include "funciones.h"
-#include "cargaDatos.h"
-#include "structs.h"
-
+#include "marcas.h"
 using namespace std;
 
-string medioPago[10], vecNombresMarcas[10];
-int opcion, vecMarcas[10], tamanio = 10;
-
-MedioPago mp[5]; // No es mercado pago :P
-Marca m[10];
-Producto p[20]; // Reemplazamos los vectores structs que contiene las propiedades en structs.h
-
+int vecMarcas[10];
+string vecNombresMarcas[10];
 
 void mostrarMenu() {
-    cout << "-- MENU PRINCIPAL --" << endl;
-    cout << endl;
+    cout << "MENU PRINCIPAL" << endl;
     cout << "1. Cargar lote de marcas" << endl;
     cout << "2. Cargar lote de productos" << endl;
     cout << "3. Cargar lote de formas de pago" << endl;
@@ -27,50 +19,31 @@ void mostrarMenu() {
 }
 
 bool procesarMenu() {
+    int opcion;
     cin >> opcion;
-    while(opcion != 1 &&
-          opcion != 2 &&
-          opcion != 3 &&
-          opcion != 4 &&
-          opcion != 5 &&
-          opcion != 0 )
-    {
-        system("cls");
-        mostrarMenu();
-        cin >> opcion;
-    }
-    system("cls");
+
     switch (opcion) {
         case 1:
             cout << "Cargar marcas, solo numeros del 1 al 10\n";
-            cargarMarcas(m);
+            cargarMarcas(vecMarcas,10);
             cout << "Los nombres de las marcas\n";
-            cargarNombres(m);
-            system("cls");
+            cargarNombres(vecNombresMarcas,10);
             break;
         case 2:
-            cout << "\Funcion: Cargar Productos\n";
-                if (!verificarMarcas(m)) {
-                    cout << "No existen marcas registradas, por favor vuelva al menu a cargarlas." << endl;
-                    volverAlMenuPrincipal();
-                }
-            cargarProductos(p, m);
-            system("cls");
+            cout << "\Funcion: Cargar productos\n";
+            volverAlMenuPrincipal();
             break;
         case 3:
             cout << "\Funcion: Cargar formas de pago\n";
-            cargarFormasPago(mp);
-            system("cls");
+            volverAlMenuPrincipal();
             break;
         case 4:
             cout << "\Funcion: Cargar ventas\n";
             volverAlMenuPrincipal();
-            system("cls");
             break;
         case 5:
             cout << "\Funcion: Mostrar reportes\n";
             volverAlMenuPrincipal();
-            system("cls");
             break;
         case 0:
             cout << "Saliendo del programa..." << endl;
@@ -78,10 +51,21 @@ bool procesarMenu() {
         default:
             cout << "Opcion invalida. Intente nuevamente.\n";
             volverAlMenuPrincipal();
-            system("cls");
     }
 
     return false;
 }
 
+void volverAlMenuPrincipal() {
+    int volver = -1;
+    while (volver != 0) {
+        cout << "\nPresione 0 para volver al menu principal: ";
+        cin >> volver;
+        if (volver != 0) {
+            cout << "Opcion invalida. Intente nuevamente.";
+        }
+    }
+
+
+}
 
