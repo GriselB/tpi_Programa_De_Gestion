@@ -7,6 +7,7 @@ using namespace std;
 void cargarNombres(Marca marcas[]);
 void buscarMarcas(Marca marcas[]);
 bool verificarMarcas(Marca marcas[]);
+bool buscarProducto(Producto productos[], int codigoProduct);
 
 #endif
 

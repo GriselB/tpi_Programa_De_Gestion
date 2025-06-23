@@ -6,12 +6,12 @@
 
 using namespace std;
 
-string medioPago[10], vecNombresMarcas[10];
-int opcion, vecMarcas[10], tamanio = 10;
+int opcion;
 
 MedioPago mp[5]; // No es mercado pago :P
 Marca m[10];
 Producto p[20]; // Reemplazamos los vectores structs que contiene las propiedades en structs.h
+recaudacionProducto recaudacionProducto[20];
 
 
 void mostrarMenu() {
@@ -54,7 +54,7 @@ bool procesarMenu() {
                     cout << "No existen marcas registradas, por favor vuelva al menu a cargarlas." << endl;
                     volverAlMenuPrincipal();
                 }
-            cargarProductos(p, m);
+            cargarProductos(p, m, recaudacionProducto);
             system("cls");
             break;
         case 3:

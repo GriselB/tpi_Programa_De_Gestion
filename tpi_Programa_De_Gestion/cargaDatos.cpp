@@ -15,15 +15,17 @@ int i;
         }}
     }
 
-void cargarProductos(Producto productos[20], Marca marcas[10]){
+void cargarProductos(Producto productos[20], Marca marcas[10], recaudacionProducto recaudacionProducto[20]){
     int i;
 
     for (int i=0; i<20; i++) {
         cout<<"ingresar codigo de 3 digitos del producto \n";
         cin >> productos[i].codProducto;
+        recaudacionProducto[i].codProducto = productos[i].codProducto;
 
         cout<<"ingresar nombre del producto\n";
         cin >> productos[i].nombreProducto;
+        recaudacionProducto[i].nombreProducto = productos[i].nombreProducto;
 
         cout<<"ingresar precio de venta del producto\n";
         cin >> productos[i].precioVenta;
@@ -35,6 +37,7 @@ void cargarProductos(Producto productos[20], Marca marcas[10]){
 
         cout<<"ingresar stock disponible\n";
         cin >> productos[i].stockDisp;
+        recaudacionProducto[i].stockRemanante = productos[i].stockDisp;
 
         cout<<"ingresar codigo de marca del producto\n";
 
@@ -91,5 +94,67 @@ void cargarFormasPago(MedioPago mp[5])
         cout << "Para el medio: " << mp[i].nombreFormaPago << " se selecciono el medio: " << mp[i].porcDescuentoInteres << endl;
         };
 }
+
+void cargarVentas(Producto productos[20], Marca marcas[10], MedioPago mp[5], recaudacionProducto[20])
+{
+    int i = 0;
+    int diaVenta;
+    int nroCompra;
+    string formaPago;
+    int codigoProducto;
+    int cantidadVendida;
+    int codigoCliente;
+
+    cout << "Ingrese dia de la semana" << endl;
+    cin >> diaVenta;
+
+    while (diaVenta < 1 || diaVenta > 30)
+    {
+        cout << "Dia invalido, ingrese un dia del 1 al 30" << endl;
+        cin >> diaVenta;
+    }
+
+
+
+        for (i=0; i<7; i++)
+        {
+        cout << "Ingrese nro de compra" << endl;
+        cin >> nroCompra;
+
+        cout << "Ingrese codigo de producto" << endl;
+        cin >> codigoProducto;
+
+            while (!buscarProducto(productos, codigoProducto))
+            {
+                cout << "El codigo de producto no existe, intente nuevamente" << endl;
+                cin >> codigoProducto;
+            }
+
+        cout << "Ingrese forma de pago" << endl;
+        cin >> formaPago;
+
+        cout << "Ingrese cantidad vendida" << endl;
+        cin >> cantidadVendida;
+
+            if (codigoProducto == recaudacionProducto.codProducto)
+            {
+                while (recaudacionProducto.cantidadVendida > productos.stockDisp)
+                {
+                    cout << "No hay suficiente stock disponible, ingrese nuevamente" << endl;
+                    cin >> cantidadVendida;
+                }
+
+                recaudacionProducto.cantidadVendida = recaudacionProducto.cantidadVendida + cantidadVendida;
+                recaudacionProducto.stockRemanante = recaudacionProducto.stockRemanante - cantidadVendida;
+                recaudacionProducto.totalRecaudado = recaudacionProducto.totalRecaudado + (cantidadVendida * productos.precioVenta);
+
+            }
+
+        cout << "Ingrese el codigo del cliente" << endl;
+        cin >> codigoCliente;
+        }
+
+}
+
 
 

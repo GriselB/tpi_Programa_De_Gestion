@@ -32,6 +32,14 @@ struct Venta{
     int diaVenta;
 };
 
+struct recaudacionProducto{
+    int codProducto;
+    string nombreProducto;
+    double totalRecaudado;
+    int cantidadVendida;
+    int stockRemanante;
+};
+
 #endif
 
 

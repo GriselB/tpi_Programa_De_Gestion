@@ -39,3 +39,16 @@ bool verificarMarcas(Marca marcas[]) {
     }
         return false;
 }
+
+bool buscarProducto(Producto productos[20], int codigoProducto)
+{
+    int i;
+
+    for(i=0; 1 < 20; i++){
+        if (productos[i].codProducto == codigoProducto){
+            return true;
+            break;
+        }
+    }
+    return false;
+}
