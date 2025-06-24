@@ -1,7 +1,6 @@
 #include <iostream>
 #include "funciones.h"
 #include "structs.h"
-
 using namespace std;
 
 void cargarNombres(Marca marcas[])
@@ -9,6 +8,7 @@ void cargarNombres(Marca marcas[])
     int i;
     for (i=0; i<10; i++)
     {
+        cout << "Ingrese el nombre de la marca para codigo marca: " << marcas[i].codMarca << endl;
         cin >> marcas[i].nombreMarca;
     }
 }
@@ -18,11 +18,11 @@ void volverAlMenuPrincipal()
     int volver = -1;
     while (volver != 0)
     {
-        cout << "\nPresione 0 para volver al menu principal: " << endl;
+        cout << "\n Presione 0 para volver al menu principal: " << endl;
         cin >> volver;
         if (volver != 0)
         {
-            cout << "Opcion invalida. Intente nuevamente." << endl;
+            cout << "ERROR: Opcion invalida. Intente de nuevo: \n" << endl;
         }
     }
 }
@@ -85,7 +85,7 @@ void cargarDiasDeVenta(int diasVentas[7]) {
         cout << "Ingrese el numero del dia de la semana (1 al 30): ";
         cin >> dia;
         while (dia < 1 || dia > 30) {
-            cout << "Dia invalido, ingrese un dia del 1 al 30: ";
+            cout << "ERROR: Dia invalido, ingrese un dia del 1 al 30. Intente de nuevo: \n ";
             cin >> dia;
         }
         diasVentas[i] = dia;

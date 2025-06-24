@@ -2,18 +2,43 @@
 #include "cargaDatos.h"
 #include "funciones.h"
 #include "structs.h"
-
 using namespace std;
 
 void cargarMarcas(Marca marcas[10]) {
 int i;
-    for (i=0; i<10; i++) {
-        cin >> marcas[i].codMarca;
-        while (marcas[i].codMarca > 10 || marcas[i].codMarca == 0) {
-        cout << "No se puede ingresar numeros mayores a 10 o 0"<<endl;
-        cin >> marcas[i].codMarca;
-        }}
+int cod;
+bool repetido;
+
+    while (i < 10) {
+
+        cin >> cod;
+
+        while (cod < 0 || cod > 10) {
+            cout << "---------------------------------------------" << endl;
+            cout << "ERROR: No se puede ingresar numeros mayores a 10 o 0. Intente otro: \n" << endl;
+            cin >> cod;
+            cout << "---------------------------------------------" << endl;
+        }
+
+        repetido = false;
+
+        for (int j = 0; j < i; j++) {
+            if (marcas[j].codMarca == cod) {
+                repetido = true;
+                break;
+            }
+        }
+
+        if (repetido) {
+            cout << "---------------------------------------------" << endl;
+            cout << "ERROR: El codigo de marca ya fue ingresado. Intente otro: \n";
+            cout << "---------------------------------------------" << endl;
+        } else {
+            marcas[i].codMarca = cod;
+            i++;
+        }
     }
+}
 
 void cargarProductos(Producto productos[2], Marca marcas[10]){
     int i;
@@ -23,8 +48,10 @@ void cargarProductos(Producto productos[2], Marca marcas[10]){
         cin >> productos[i].codProducto;
         while (productos[i].codProducto < 1 || productos[i].codProducto > 999)
         {
-            cout<<"Solo se aceptan numeros del 1 al 999 \n";
+            cout << "---------------------------------------------" << endl;
+            cout<<"ERROR: Solo se aceptan numeros del 1 al 999. Intente otro.\n";
             cin >> productos[i].codProducto;
+            cout << "---------------------------------------------" << endl;
         }
 
         cout<<"ingresar nombre del producto\n";
@@ -69,19 +96,25 @@ void cargarFormasPago(MedioPago mp[5])
             cin >> mp[i].codMedioPago;
 
             while (!esCodigoValido(mp[i].codMedioPago)) {
-            cout << "Codigo invalido. Intente de nuevo.\n";
+            cout << "---------------------------------------------" << endl;
+            cout << "ERROR: Codigo invalido. Intente de nuevo: \n";
             cin >> mp[i].codMedioPago;
+            cout << "---------------------------------------------" << endl;
             }
 
             bool repetido = medioDePagoRepetido(mp, i, mp[i].codMedioPago);
 
             while (repetido) {
-                cout << "El codigo ya fue ingresado. Ingrese uno diferente: ";
+                cout << "---------------------------------------------" << endl;
+                cout << "ERROR: El codigo ya fue ingresado. Intente de nuevo: \n ";
                 cin >> mp[i].codMedioPago;
+                cout << "---------------------------------------------" << endl;
 
                 while (!esCodigoValido(mp[i].codMedioPago)) {
-                    cout << "Codigo invalido. Intente de nuevo.\n";
+                    cout << "---------------------------------------------" << endl;
+                    cout << "ERROR: Codigo invalido. Intente de nuevo.\n";
                     cin >> mp[i].codMedioPago;
+                    cout << "---------------------------------------------" << endl;
                 }
 
                 repetido = medioDePagoRepetido(mp, i, mp[i].codMedioPago);
@@ -103,8 +136,10 @@ void cargarFormasPago(MedioPago mp[5])
             cin >> descuentoInteres;
 
             while (descuentoInteres < -100){
-                cout << "El descuento no puede exceder el 100%" << endl;
+                cout << "---------------------------------------------" << endl;
+                cout << "ERROR: El descuento no puede exceder el 100% Intente de nuevo.\n" << endl;
                 cin >> descuentoInteres;
+                cout << "---------------------------------------------" << endl;
             }
 
             if (descuentoInteres < 0) {
@@ -124,7 +159,7 @@ void cargarFormasPago(MedioPago mp[5])
         }
 }
 
-void cargarLoteVentas(Producto productos[20], Marca marcas[10], MedioPago mp[5], RecaudacionProducto recaudacionProducto[20], int& productosVendidos)
+void cargarLoteVentas(Producto productos[20], Marca marcas[10], MedioPago mp[5], RecaudacionProducto recaudacionProducto[20], int& productosVendidos, int contClientes[])
 {
     int diasVentas[7];
     int nroCompra;
@@ -139,7 +174,9 @@ void cargarLoteVentas(Producto productos[20], Marca marcas[10], MedioPago mp[5],
 
     // si no los cargo bien, vuelve a hacerlo
     while (!validarDiasConsecutivos(diasVentas)) {
-        cout << "Los dias ingresados no pertenecen a la misma semana. Intente nuevamente.";
+        cout << "---------------------------------------------" << endl;
+        cout << "ERROR: Los dias ingresados no pertenecen a la misma semana. Intente de nuevo: \n";
+        cout << "---------------------------------------------" << endl;
         cargarDiasDeVenta(diasVentas);
     }
 
@@ -161,8 +198,10 @@ void cargarLoteVentas(Producto productos[20], Marca marcas[10], MedioPago mp[5],
             int indiceProducto = buscarProductoPorCodigoProducto(productos, codigoProducto);
                 while (indiceProducto == -1)
                 {
-                    cout << "El codigo de producto no existe, intente nuevamente" << endl;
+                    cout << "---------------------------------------------" << endl;
+                    cout << "ERROR: El codigo de producto no existe. Intente de nuevo.\n" << endl;
                     cin >> codigoProducto;
+                    cout << "---------------------------------------------" << endl;
                     indiceProducto = buscarProductoPorCodigoProducto(productos, codigoProducto);
                 }
 
@@ -173,8 +212,10 @@ void cargarLoteVentas(Producto productos[20], Marca marcas[10], MedioPago mp[5],
 
             while (indiceMP == -1)
                 {
-                    cout << "El medio de pago no existe, intente nuevamente" << endl;
+                    cout << "---------------------------------------------" << endl;
+                    cout << "ERROR: El medio de pago no existe. Intente de nuevo.\n" << endl;
                     cin >> medioPago;
+                    cout << "---------------------------------------------" << endl;
                     indiceMP =  buscarIndiceMedioPago(mp, 5, medioPago);
                 }
 
@@ -182,8 +223,10 @@ void cargarLoteVentas(Producto productos[20], Marca marcas[10], MedioPago mp[5],
             cin >> cantidadVendida;
 
             while (cantidadVendida > productos[indiceProducto].stockDisp) {
-                cout << "No hay suficiente stock. Ingrese una cantidad valida: ";
+                cout << "---------------------------------------------" << endl;
+                cout << "ERROR: No hay suficiente stock. Intente de nuevo: \n ";
                 cin >> cantidadVendida;
+                cout << "---------------------------------------------" << endl;
             }
 
             float totalVenta = cantidadVendida * productos[indiceProducto].precioVenta;
@@ -197,6 +240,17 @@ void cargarLoteVentas(Producto productos[20], Marca marcas[10], MedioPago mp[5],
 
             cout << "Ingrese codigo de cliente" << endl;
             cin >> codigoCliente;
+
+            while (codigoCliente < 1 || codigoCliente > 50) { //aca agregue para que el usuario ingrese un codigo de cliente entre el 1 y el 50 como dicta el enunciado
+                cout << "---------------------------------------------" << endl;
+                cout << "ERROR: Codigo invalido. Ingrese un codigo entre 1 y 50. Intente de nuevo: \n ";
+                cin >> codigoCliente;
+                cout << "---------------------------------------------" << endl;
+            }
+
+            // Aumentar el contador del cliente correspondiente
+            contClientes[codigoCliente - 1]++;
+
 
             int indiceRecaudacion = buscarIndiceRecaudacionProducto(recaudacionProducto, codigoProducto, productosVendidos);
 

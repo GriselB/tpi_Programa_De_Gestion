@@ -4,12 +4,12 @@
 #include "cargaDatos.h"
 #include "structs.h"
 #include "reportes.h"
-
 using namespace std;
 
 string medioPago[10], vecNombresMarcas[10];
 int opcion;
 int productosVendidos = 0;
+int contClientes[50];
 string formaPago;
 MedioPago mp[5]; // No es mercado pago :P
 Marca m[10];
@@ -17,7 +17,7 @@ Producto p[2]; // Reemplazamos los vectores structs que contiene las propiedades
 RecaudacionProducto rP[20];
 void mostrarMenu()
 {
-    cout << "-- MENU PRINCIPAL --" << endl;
+    cout << "\n===  MENU PRINCIPAL ===" << endl;
     cout << endl;
     cout << "1. Cargar lote de marcas" << endl;
     cout << "2. Cargar lote de productos" << endl;
@@ -48,12 +48,11 @@ bool procesarMenu()
     case 1:
         cout << "Cargar marcas, solo numeros del 1 al 10\n";
         cargarMarcas(m);
-        cout << "Los nombres de las marcas\n";
         cargarNombres(m);
         system("cls");
         break;
     case 2:
-        cout << "\Funcion: Cargar Productos\n";
+        cout << "\Cargar Productos\n";
         if (verificarMarcas(m))
         {
             cargarProductos(p, m);
@@ -66,7 +65,7 @@ bool procesarMenu()
         system("cls");
         break;
     case 3:
-        cout << "Funcion: Cargar formas de pago" << endl;
+        cout << "Cargar formas de pago" << endl;
         cargarFormasPago(mp);
         system("cls");
         break;
@@ -76,7 +75,7 @@ bool procesarMenu()
             volverAlMenuPrincipal();
         }
         else {
-        cargarLoteVentas(p, m, mp, rP, productosVendidos);
+        cargarLoteVentas(p, m, mp, rP, productosVendidos,contClientes);
         }
         system("cls");
         break;
@@ -133,6 +132,8 @@ void mostrarMenuReportes(RecaudacionProducto recaudacionProducto[], int producto
         break;
     case 5:
         cout << "Reporte 5: Top 10 clientes + Sorteo de cupones (pendiente)\n";
+        mostrarTop10Clientes(contClientes);
+        volverAlMenuPrincipal();
         break;
     case 0:
         cout << "Volviendo al menu principal..." << endl;

@@ -1,6 +1,5 @@
 #ifndef STRUCTS_H
 #define STRUCTS_H
-
 using namespace std;
 
 struct Marca {
@@ -30,6 +29,11 @@ struct RecaudacionProducto{
     double totalRecaudado;
     int cantidadVendida;
     int stockRemanente;
+};
+
+struct ClienteInfo {
+    int codigoCliente;
+    int cantidadCompras;
 };
 
 #endif

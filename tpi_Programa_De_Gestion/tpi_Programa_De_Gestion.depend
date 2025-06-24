@@ -117,3 +117,47 @@
 	"structs.h"
 	<vector>
 
+1750745742 source:c:\users\pc\downloads\tpi_programa_de_gestiongfdgfdgfdgfdg\cargadatos.cpp
+	<iostream>
+	"cargaDatos.h"
+	"funciones.h"
+	"structs.h"
+
+1750745466 c:\users\pc\downloads\tpi_programa_de_gestiongfdgfdgfdgfdg\cargadatos.h
+	"structs.h"
+
+1750743640 c:\users\pc\downloads\tpi_programa_de_gestiongfdgfdgfdgfdg\structs.h
+
+1750746114 c:\users\pc\downloads\tpi_programa_de_gestiongfdgfdgfdgfdg\funciones.h
+	"structs.h"
+
+1750745785 source:c:\users\pc\downloads\tpi_programa_de_gestiongfdgfdgfdgfdg\funciones.cpp
+	<cstdlib>
+	<ctime>
+	<iostream>
+	"funciones.h"
+	"structs.h"
+
+1750745910 source:c:\users\pc\downloads\tpi_programa_de_gestiongfdgfdgfdgfdg\main.cpp
+	<iostream>
+	"menu.h"
+
+1750745910 c:\users\pc\downloads\tpi_programa_de_gestiongfdgfdgfdgfdg\menu.h
+	"structs.h"
+
+1750745466 source:c:\users\pc\downloads\tpi_programa_de_gestiongfdgfdgfdgfdg\menu.cpp
+	<iostream>
+	"menu.h"
+	"funciones.h"
+	"cargaDatos.h"
+	"structs.h"
+	"reportes.h"
+
+1750743662 c:\users\pc\downloads\tpi_programa_de_gestiongfdgfdgfdgfdg\reportes.h
+
+1750743948 source:c:\users\pc\downloads\tpi_programa_de_gestiongfdgfdgfdgfdg\reportes.cpp
+	<iostream>
+	"structs.h"
+	<cstdlib>
+	<ctime>
+

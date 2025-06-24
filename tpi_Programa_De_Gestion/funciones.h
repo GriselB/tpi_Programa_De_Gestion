@@ -1,7 +1,6 @@
 #ifndef FUNCIONES_H
 #define FUNCIONES_H
 #include "structs.h"
-
 using namespace std;
 
 void cargarNombres(Marca marcas[]);
@@ -15,6 +14,7 @@ int buscarIndiceRecaudacionProducto(RecaudacionProducto recaudacionProducto[], i
 int buscarIndiceMedioPago(MedioPago mp[], int cantidadMedios, string codigo);
 bool esCodigoValido(string codigo);
 bool medioDePagoRepetido(MedioPago mp[], int cantidad, string codigo);
+
 
 #endif
 
