@@ -6,5 +6,8 @@ void reporteRecaudacionPorProducto(RecaudacionProducto recaudacionProducto[], in
 void productosSinVentas(RecaudacionProducto recaudacionProducto[], Producto productos[]);
 void mostrarTop10Clientes(int contClientes[]);
 void ordenarClientesPorCompras(ClienteInfo clientes[], int cantidad);
+void porcentajeVentasPorMedioPago(PorcentajeMedioPago porcentajes[]);
+void mostrarVentasPorMarcaYFormaPago(VentasMarcaFormaPago ventas[], int total);
+
 
 #endif

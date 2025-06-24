@@ -35,6 +35,16 @@ void buscarMarcas(Marca marcas[])
     }
 }
 
+int buscarIndiceMarca(Marca marcas[], int cantidad, int codigo) {
+    for (int i = 0; i < cantidad; i++) {
+        if (marcas[i].codMarca == codigo) {
+            return i;
+        }
+    }
+    return -1;
+}
+
+
 bool verificarMarcas(Marca marcas[])
 {
     int i;
@@ -146,4 +156,13 @@ int contarProductosConVentas(RecaudacionProducto recaudacionProducto[]) {
         }
     }
     return contador;
+}
+
+int buscarIndiceVentasMarcaFormaPago(VentasMarcaFormaPago ventas[], int total, int codMarca, string codMedioPago) {
+    for (int i = 0; i < total; i++) {
+        if (ventas[i].codMarca == codMarca && ventas[i].codMedioPago == codMedioPago) {
+            return i;
+        }
+    }
+    return -1;
 }

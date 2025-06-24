@@ -13,7 +13,7 @@ bool repetido;
 
         cin >> cod;
 
-        while (cod<0 || cod>10) {
+        while (cod <= 0 || cod > 10) {
             cout << "---------------------------------------------" << endl;
             cout << "ERROR: No se puede ingresar numeros mayores a 10 o 0. Intente otro: \n" << endl;
             cin >> cod;
@@ -71,7 +71,17 @@ void cargarProductos(Producto productos[20], Marca marcas[10]){
         cout<<"ingresar el numero de marca del producto\n";
 
         buscarMarcas(marcas);
-        cin >> productos[i].codMarca.codMarca;
+        int codigoMarca;
+        cin >> codigoMarca;
+
+        int indiceMarca = buscarIndiceMarca(marcas, 10, codigoMarca);
+        while (indiceMarca == -1) {
+            cout << "Marca no encontrada. Ingrese un codigo valido: ";
+            cin >> codigoMarca;
+        indiceMarca = buscarIndiceMarca(marcas, 10, codigoMarca);
+        }
+
+        productos[i].codMarca = marcas[indiceMarca];
 
         }
     }
@@ -152,14 +162,14 @@ void cargarFormasPago(MedioPago mp[5])
         }
         for (i=0; i<5; i++) {
             if (mp[i].descuento != 0)
-                cout << "Para el medio: " << mp[i].nombreFormaPago << " se selecciono el medio: " << mp[i].descuento << endl;
+                cout << "Para el medio: " << mp[i].nombreFormaPago << " se selecciono el descuento: " << mp[i].descuento << endl;
             else{
-                cout << "Para el medio: " << mp[i].nombreFormaPago << " se selecciono el medio: " << mp[i].interes << endl;
+                cout << "Para el medio: " << mp[i].nombreFormaPago << " se selecciono el interes: " << mp[i].interes << endl;
             }
         }
 }
 
-void cargarLoteVentas(Producto productos[20], Marca marcas[10], MedioPago mp[5], RecaudacionProducto recaudacionProducto[20], int& productosVendidos, int contClientes[])
+void cargarLoteVentas(Producto productos[20], Marca marcas[10], MedioPago mp[5], RecaudacionProducto recaudacionProducto[20], int& productosVendidos, int contClientes[], PorcentajeMedioPago porcentajeMedioPago[5], VentasMarcaFormaPago ventasMarcaFormaPago[50], int& totalVentasMarcaFormaPago)
 {
     int diasVentas[7];
     int nroCompra;
@@ -219,6 +229,8 @@ void cargarLoteVentas(Producto productos[20], Marca marcas[10], MedioPago mp[5],
                     indiceMP =  buscarIndiceMedioPago(mp, 5, medioPago);
                 }
 
+            porcentajeMedioPago[indiceMP].cantidadVentas++;
+
             cout << "Ingrese cantidad vendida" << endl;
             cin >> cantidadVendida;
 
@@ -227,6 +239,22 @@ void cargarLoteVentas(Producto productos[20], Marca marcas[10], MedioPago mp[5],
                 cout << "ERROR: No hay suficiente stock. Intente de nuevo: \n ";
                 cin >> cantidadVendida;
                 cout << "---------------------------------------------" << endl;
+            }
+
+            int codMarca = productos[indiceProducto].codMarca.codMarca;
+            string nombreMarca = productos[indiceProducto].codMarca.nombreMarca;
+            string codigoMP = medioPago;
+
+            int indiceVMFP = buscarIndiceVentasMarcaFormaPago(ventasMarcaFormaPago, totalVentasMarcaFormaPago, codMarca, codigoMP);
+
+            if (indiceVMFP == -1) {
+                ventasMarcaFormaPago[totalVentasMarcaFormaPago].codMarca = codMarca;
+                ventasMarcaFormaPago[totalVentasMarcaFormaPago].nombreMarca = nombreMarca;
+                ventasMarcaFormaPago[totalVentasMarcaFormaPago].codMedioPago = codigoMP;
+                ventasMarcaFormaPago[totalVentasMarcaFormaPago].cantidadVendida = cantidadVendida;
+                totalVentasMarcaFormaPago++;
+                }else {
+                ventasMarcaFormaPago[indiceVMFP].cantidadVendida += cantidadVendida;
             }
 
             float totalVenta = cantidadVendida * productos[indiceProducto].precioVenta;

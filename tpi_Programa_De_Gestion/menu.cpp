@@ -10,10 +10,12 @@ int opcion;
 int productosVendidos = 0;
 int cantidadRecaudacion = 0;
 int contClientes[50];
+int totalVentasMarcaFormaPago = 0;
 
 string formaPago;
 MedioPago mp[5]; // No es mercado pago :P
-PorcentajeMedioPago[5] porcentajesMP;
+PorcentajeMedioPago porcentajesMP[5];
+VentasMarcaFormaPago ventasMarcaFormaPago[50];
 Marca m[10];
 Producto p[20];
 RecaudacionProducto rP[20];
@@ -78,7 +80,7 @@ bool procesarMenu()
             volverAlMenuPrincipal();
         }
         else {
-        cargarLoteVentas(p, m, mp, rP, productosVendidos,contClientes);
+        cargarLoteVentas(p, m, mp, rP, productosVendidos,contClientes, porcentajesMP, ventasMarcaFormaPago, totalVentasMarcaFormaPago);
         }
         system("cls");
         break;
@@ -121,15 +123,17 @@ void mostrarMenuReportes(RecaudacionProducto recaudacionProducto[], int producto
     switch (opcion)
     {
     case 1:
-        cout << "Reporte: Recaudacion por producto\n";
+        cout << "Reporte 1: Recaudacion por producto\n";
         reporteRecaudacionPorProducto(recaudacionProducto, productosVendidos);
         volverAlMenuPrincipal();
         break;
     case 2:
-        cout << "Reporte 2: Porcentaje de ventas por forma de pago (pendiente)\n";
+        cout << "Reporte 2: Porcentaje de ventas por forma de pago\n";
+        porcentajeVentasPorMedioPago(porcentajesMP);
         break;
     case 3:
         cout << "Reporte 3: Ventas por marca y forma de pago (pendiente)\n";
+        mostrarVentasPorMarcaYFormaPago(ventasMarcaFormaPago, totalVentasMarcaFormaPago);
         break;
     case 4:
         cout << "Reporte 4: Productos sin ventas\n";
@@ -137,7 +141,7 @@ void mostrarMenuReportes(RecaudacionProducto recaudacionProducto[], int producto
         volverAlMenuPrincipal();
         break;
     case 5:
-        cout << "Reporte 5: Top 10 clientes + Sorteo de cupones (pendiente)\n";
+        cout << "Reporte 5: Top 10 clientes + Sorteo de cupones\n";
         mostrarTop10Clientes(contClientes);
         volverAlMenuPrincipal();
         break;

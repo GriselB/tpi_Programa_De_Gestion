@@ -36,6 +36,18 @@ struct ClienteInfo {
     int cantidadCompras;
 };
 
+struct PorcentajeMedioPago {
+    MedioPago medio;
+    int cantidadVentas;
+};
+
+struct VentasMarcaFormaPago {
+    int codMarca;
+    string nombreMarca;
+    string codMedioPago;
+    int cantidadVendida;
+};
+
 #endif
 
 

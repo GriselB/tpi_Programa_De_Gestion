@@ -29,6 +29,37 @@ void reporteRecaudacionPorProducto(RecaudacionProducto recaudacionProducto[], in
     }
 }
 
+void porcentajeVentasPorMedioPago(PorcentajeMedioPago porcentajes[5]) {
+    int total = 0;
+
+    for (int i = 0; i < 5; i++) {
+        total += porcentajes[i].cantidadVentas;
+    }
+
+    cout << "\n=== Reporte 2: Porcentaje de ventas por medio de pago ===\n";
+
+    for (int i = 0; i < 5; i++) {
+        float porcentaje = 0;
+
+        if (total > 0) {
+            porcentaje = (porcentajes[i].cantidadVentas * 100.0f) / total;
+        }
+
+        cout << "Medio de pago: " << porcentajes[i].medio.nombreFormaPago
+             << " | Porcentaje: " << porcentaje << "%" << endl;
+    }
+}
+
+void mostrarVentasPorMarcaYFormaPago(VentasMarcaFormaPago ventas[], int total) {
+    cout << "\n=== Reporte 3: Ventas por marca y forma de pago ===\n";
+
+    for (int i = 0; i < total; i++) {
+        cout << "Marca: " << ventas[i].nombreMarca
+             << " | Medio de pago: " << ventas[i].codMedioPago
+             << " | Cantidad vendida: " << ventas[i].cantidadVendida << endl;
+    }
+}
+
 void productosSinVentas(RecaudacionProducto recaudacionProducto[], Producto productos[])
 {
     cout << "\n=== Los productos que no registraron ventas son ===" << endl;
@@ -65,7 +96,6 @@ void ordenarClientesPorCompras(ClienteInfo clientes[], int cantidad) {
 
 void mostrarTop10Clientes(int contClientes[]) {
     ClienteInfo clientes[50];
-
 
     for (int i=0; i<50; i++) {
         clientes[i].codigoCliente = i + 1;
