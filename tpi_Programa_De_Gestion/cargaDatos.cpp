@@ -9,11 +9,11 @@ int i;
 int cod;
 bool repetido;
 
-    while (i < 10) {
+    while (i<10) {
 
         cin >> cod;
 
-        while (cod < 0 || cod > 10) {
+        while (cod<0 || cod>10) {
             cout << "---------------------------------------------" << endl;
             cout << "ERROR: No se puede ingresar numeros mayores a 10 o 0. Intente otro: \n" << endl;
             cin >> cod;
@@ -22,7 +22,7 @@ bool repetido;
 
         repetido = false;
 
-        for (int j = 0; j < i; j++) {
+        for (int j=0; j<i; j++) {
             if (marcas[j].codMarca == cod) {
                 repetido = true;
                 break;
@@ -40,13 +40,13 @@ bool repetido;
     }
 }
 
-void cargarProductos(Producto productos[2], Marca marcas[10]){
+void cargarProductos(Producto productos[20], Marca marcas[10]){
     int i;
 
-    for (int i=0; i<2; i++) {
+    for (int i=0; i<20; i++) {
         cout<<"ingresar codigo de 3 digitos del producto \n";
         cin >> productos[i].codProducto;
-        while (productos[i].codProducto < 1 || productos[i].codProducto > 999)
+        while (productos[i].codProducto<1 || productos[i].codProducto > 999)
         {
             cout << "---------------------------------------------" << endl;
             cout<<"ERROR: Solo se aceptan numeros del 1 al 999. Intente otro.\n";
@@ -91,7 +91,7 @@ void cargarFormasPago(MedioPago mp[5])
         cout << "TC: Tarjeta de credito" << endl;
         cout << "CT: Criptomoneda" << endl;
 
-        for (i=0; i < 5; i++){
+        for (i=0; i<5; i++){
             cout << "Seleccione medio de pago: ";
             cin >> mp[i].codMedioPago;
 
@@ -135,14 +135,14 @@ void cargarFormasPago(MedioPago mp[5])
             cout << "Ingrese el descuento o interes (Negativo para descuento, positivo para interes)" << endl;
             cin >> descuentoInteres;
 
-            while (descuentoInteres < -100){
+            while (descuentoInteres< -100){
                 cout << "---------------------------------------------" << endl;
                 cout << "ERROR: El descuento no puede exceder el 100% Intente de nuevo.\n" << endl;
                 cin >> descuentoInteres;
                 cout << "---------------------------------------------" << endl;
             }
 
-            if (descuentoInteres < 0) {
+            if (descuentoInteres<0) {
                 mp[i].descuento = -descuentoInteres;
                 mp[i].interes = 0;
             } else {
@@ -150,7 +150,7 @@ void cargarFormasPago(MedioPago mp[5])
                 mp[i].interes = descuentoInteres;
             }
         }
-        for (i = 0; i < 5; i++) {
+        for (i=0; i<5; i++) {
             if (mp[i].descuento != 0)
                 cout << "Para el medio: " << mp[i].nombreFormaPago << " se selecciono el medio: " << mp[i].descuento << endl;
             else{

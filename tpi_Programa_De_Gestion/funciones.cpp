@@ -29,7 +29,7 @@ void volverAlMenuPrincipal()
 
 void buscarMarcas(Marca marcas[])
 {
-    for (int i = 0; i < 10; i++)
+    for (int i=0; i<10; i++)
     {
         cout << marcas[i].codMarca << " - " << marcas[i].nombreMarca << endl;
     }
@@ -38,7 +38,7 @@ void buscarMarcas(Marca marcas[])
 bool verificarMarcas(Marca marcas[])
 {
     int i;
-    for (i = 0; i < 10; i++)
+    for (i=0; i<10; i++)
     {
         if (marcas[i].codMarca != 0)
         {
@@ -68,6 +68,12 @@ bool medioDePagoRepetido(MedioPago mp[], int cantidad, string codigo) {
     return false;
 }
 
+void inicializarPorcentajesMedioPago(MedioPago mp[], PorcentajeMedioPago porcentajes[5]) {
+    for (int i=0; i<5; i++) {
+        porcentajes[i].medio = mp[i];
+        porcentajes[i].cantidadVentas = 0;
+    }
+}
 
 int buscarProductoPorCodigoProducto(Producto productos[], int codProducto) {
 // buscamos la posicion en la que se encuentra el producto
@@ -81,10 +87,10 @@ int buscarProductoPorCodigoProducto(Producto productos[], int codProducto) {
 
 void cargarDiasDeVenta(int diasVentas[7]) {
     int dia;
-    for (int i = 0; i < 7; i++) {
+    for (int i=0; i<7; i++) {
         cout << "Ingrese el numero del dia de la semana (1 al 30): ";
         cin >> dia;
-        while (dia < 1 || dia > 30) {
+        while (dia<1 || dia>30) {
             cout << "ERROR: Dia invalido, ingrese un dia del 1 al 30. Intente de nuevo: \n ";
             cin >> dia;
         }
@@ -95,7 +101,7 @@ void cargarDiasDeVenta(int diasVentas[7]) {
 // Buscamos el minimo en este caso para saber que los proximos dias se encuentren en la misma semana y sea correlativo (por ejemplo, si pongo dia 1, no puedo poner dia 30)
 int obtenerMinimo(int dias[7]) {
     int minimo = dias[0];
-    for (int i = 1; i < 7; i++) {
+    for (int i=1; i<7; i++) {
         if (dias[i] < minimo)
             minimo = dias[i];
     }
@@ -105,7 +111,7 @@ int obtenerMinimo(int dias[7]) {
 // Nos fijamos que sean dias consecutivos
 bool validarDiasConsecutivos(int dias[7]) {
     int minDia = obtenerMinimo(dias);
-    for (int i = 0; i < 7; i++) {
+    for (int i=0; i<7; i++) {
         if (dias[i] < minDia || dias[i] > minDia + 6)
             return false;
     }
@@ -124,10 +130,20 @@ int buscarIndiceRecaudacionProducto(RecaudacionProducto recaudacionProducto[], i
 
 // Para saber cuanto interes o descuento tiene el cliente
 int buscarIndiceMedioPago(MedioPago mp[], int cantidadMedios, string codigo) {
-    for (int i = 0; i < cantidadMedios; i++) {
+    for (int i=0; i<cantidadMedios; i++) {
         if (mp[i].codMedioPago == codigo) {
             return i;
         }
     }
     return -1;
+}
+
+int contarProductosConVentas(RecaudacionProducto recaudacionProducto[]) {
+    int contador = 0;
+    for (int i = 0; i < 20; i++) {
+        if (recaudacionProducto[i].codProducto != 0) {
+            contador++;
+        }
+    }
+    return contador;
 }

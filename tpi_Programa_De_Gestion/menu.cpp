@@ -6,15 +6,18 @@
 #include "reportes.h"
 using namespace std;
 
-string medioPago[10], vecNombresMarcas[10];
 int opcion;
 int productosVendidos = 0;
+int cantidadRecaudacion = 0;
 int contClientes[50];
+
 string formaPago;
 MedioPago mp[5]; // No es mercado pago :P
+PorcentajeMedioPago[5] porcentajesMP;
 Marca m[10];
-Producto p[2]; // Reemplazamos los vectores structs que contiene las propiedades en structs.
+Producto p[20];
 RecaudacionProducto rP[20];
+
 void mostrarMenu()
 {
     cout << "\n===  MENU PRINCIPAL ===" << endl;
@@ -120,6 +123,7 @@ void mostrarMenuReportes(RecaudacionProducto recaudacionProducto[], int producto
     case 1:
         cout << "Reporte: Recaudacion por producto\n";
         reporteRecaudacionPorProducto(recaudacionProducto, productosVendidos);
+        volverAlMenuPrincipal();
         break;
     case 2:
         cout << "Reporte 2: Porcentaje de ventas por forma de pago (pendiente)\n";
@@ -128,7 +132,9 @@ void mostrarMenuReportes(RecaudacionProducto recaudacionProducto[], int producto
         cout << "Reporte 3: Ventas por marca y forma de pago (pendiente)\n";
         break;
     case 4:
-        cout << "Reporte 4: Productos sin ventas (pendiente)\n";
+        cout << "Reporte 4: Productos sin ventas\n";
+        productosSinVentas(rP, p);
+        volverAlMenuPrincipal();
         break;
     case 5:
         cout << "Reporte 5: Top 10 clientes + Sorteo de cupones (pendiente)\n";

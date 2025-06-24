@@ -14,7 +14,8 @@ int buscarIndiceRecaudacionProducto(RecaudacionProducto recaudacionProducto[], i
 int buscarIndiceMedioPago(MedioPago mp[], int cantidadMedios, string codigo);
 bool esCodigoValido(string codigo);
 bool medioDePagoRepetido(MedioPago mp[], int cantidad, string codigo);
-
+int contarProductosConVentas(RecaudacionProducto recaudacionProducto[]);
+void inicializarPorcentajesMedioPago(MedioPago mp[], PorcentajeMedioPago porcentajes[5]);
 
 #endif
 
