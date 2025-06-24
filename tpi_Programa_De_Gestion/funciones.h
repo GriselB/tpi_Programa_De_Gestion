@@ -13,6 +13,8 @@ bool validarDiasConsecutivos(int dias[]);
 int buscarProductoPorCodigoProducto(Producto productos[], int codProducto);
 int buscarIndiceRecaudacionProducto(RecaudacionProducto recaudacionProducto[], int codProducto, int cantidadActual);
 int buscarIndiceMedioPago(MedioPago mp[], int cantidadMedios, string codigo);
+bool esCodigoValido(string codigo);
+bool medioDePagoRepetido(MedioPago mp[], int cantidad, string codigo);
 
 #endif
 

@@ -3,12 +3,13 @@
 #include "funciones.h"
 #include "cargaDatos.h"
 #include "structs.h"
-#include <vector>
+#include "reportes.h"
 
 using namespace std;
 
 string medioPago[10], vecNombresMarcas[10];
 int opcion;
+int productosVendidos = 0;
 string formaPago;
 MedioPago mp[5]; // No es mercado pago :P
 Marca m[10];
@@ -65,19 +66,27 @@ bool procesarMenu()
         system("cls");
         break;
     case 3:
-        cout << "\Funcion: Cargar formas de pago\n";
+        cout << "Funcion: Cargar formas de pago" << endl;
         cargarFormasPago(mp);
         system("cls");
         break;
     case 4:
-        //CARGAR VENTAS PRUEBA
-//        cargarVentas(ventas);
-        cargarLoteVentas(p, m, mp, rP);
+        if (p[0].codProducto == 0 || m[0].nombreMarca == "" || mp[0].codMedioPago == "") {
+            cout << "ERROR: Faltan datos. Asegurese de haber cargado productos, marcas y medios de pago." << endl;
+            volverAlMenuPrincipal();
+        }
+        else {
+        cargarLoteVentas(p, m, mp, rP, productosVendidos);
+        }
         system("cls");
         break;
     case 5:
-        cout << "\Funcion: Mostrar reportes\n";
-        volverAlMenuPrincipal();
+        if (p[0].codProducto == 0 || m[0].nombreMarca == "" || mp[0].codMedioPago == "" || rP[0].codProducto == 0) {
+            cout << "ERROR: Faltan datos. Asegurese de haber cargado productos, marcas y medios de pago ventas." << endl;
+            volverAlMenuPrincipal();
+        } else {
+            mostrarMenuReportes(rP, productosVendidos);
+        }
         system("cls");
         break;
     case 0:
@@ -90,6 +99,51 @@ bool procesarMenu()
     }
 
     return false;
+}
+
+
+
+void mostrarMenuReportes(RecaudacionProducto recaudacionProducto[], int productosVendidos) {
+    int opcion;
+
+    cout << "\n========= MENU DE REPORTES =========" << endl;
+    cout << "1. Recaudacion por producto" << endl;
+    cout << "2. Porcentaje de ventas por forma de pago" << endl;
+    cout << "3. Ventas por marca y forma de pago" << endl;
+    cout << "4. Productos sin ventas" << endl;
+    cout << "5. Top 10 clientes + Sorteo de cupones" << endl;
+    cout << "0. Volver al menu principal" << endl;
+    cout << "Seleccione una opcion: ";
+    cin >> opcion;
+
+    switch (opcion)
+    {
+    case 1:
+        cout << "Reporte: Recaudacion por producto\n";
+        reporteRecaudacionPorProducto(recaudacionProducto, productosVendidos);
+        break;
+    case 2:
+        cout << "Reporte 2: Porcentaje de ventas por forma de pago (pendiente)\n";
+        break;
+    case 3:
+        cout << "Reporte 3: Ventas por marca y forma de pago (pendiente)\n";
+        break;
+    case 4:
+        cout << "Reporte 4: Productos sin ventas (pendiente)\n";
+        break;
+    case 5:
+        cout << "Reporte 5: Top 10 clientes + Sorteo de cupones (pendiente)\n";
+        break;
+    case 0:
+        cout << "Volviendo al menu principal..." << endl;
+        return;
+    default:
+        cout << "Opcion invalida. Intente nuevamente." << endl;
+        break;
+    }
+
+    volverAlMenuPrincipal();
+    system("cls");
 }
 
 

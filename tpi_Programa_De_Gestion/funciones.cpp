@@ -49,6 +49,25 @@ bool verificarMarcas(Marca marcas[])
     return false;
 }
 
+bool esCodigoValido(string codigo) {
+    return (
+        codigo == "EF" || codigo == "ef" ||
+        codigo == "MP" || codigo == "mp" ||
+        codigo == "TR" || codigo == "tr" ||
+        codigo == "TC" || codigo == "tc" ||
+        codigo == "CT" || codigo == "ct"
+    );
+}
+
+bool medioDePagoRepetido(MedioPago mp[], int cantidad, string codigo) {
+    for (int i = 0; i < cantidad; i++) {
+        if (mp[i].codMedioPago == codigo) {
+            return true;
+        }
+    }
+    return false;
+}
+
 
 int buscarProductoPorCodigoProducto(Producto productos[], int codProducto) {
 // buscamos la posicion en la que se encuentra el producto

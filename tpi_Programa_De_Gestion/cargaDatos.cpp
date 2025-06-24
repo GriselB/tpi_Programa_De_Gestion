@@ -21,6 +21,11 @@ void cargarProductos(Producto productos[2], Marca marcas[10]){
     for (int i=0; i<2; i++) {
         cout<<"ingresar codigo de 3 digitos del producto \n";
         cin >> productos[i].codProducto;
+        while (productos[i].codProducto < 1 || productos[i].codProducto > 999)
+        {
+            cout<<"Solo se aceptan numeros del 1 al 999 \n";
+            cin >> productos[i].codProducto;
+        }
 
         cout<<"ingresar nombre del producto\n";
         cin >> productos[i].nombreProducto;
@@ -36,7 +41,7 @@ void cargarProductos(Producto productos[2], Marca marcas[10]){
         cout<<"ingresar stock disponible\n";
         cin >> productos[i].stockDisp;
 
-        cout<<"ingresar codigo de marca del producto\n";
+        cout<<"ingresar el numero de marca del producto\n";
 
         buscarMarcas(marcas);
         cin >> productos[i].codMarca.codMarca;
@@ -53,25 +58,35 @@ void cargarFormasPago(MedioPago mp[5])
 
     // Falta la validacion de que no se repitan los medios de pago
         cout << "Ingrese los codigos del medio de pago: " << endl;
-            cout << "EF: Efectivo"<< endl;
-            cout << "MP: Mercado Pago" << endl;
-            cout << "TR: Transferencia" << endl;
-            cout << "TC: Tarjeta de credito" << endl;
-            cout << "CT: Criptomoneda" << endl;
+        cout << "EF: Efectivo"<< endl;
+        cout << "MP: Mercado Pago" << endl;
+        cout << "TR: Transferencia" << endl;
+        cout << "TC: Tarjeta de credito" << endl;
+        cout << "CT: Criptomoneda" << endl;
 
         for (i=0; i < 5; i++){
-        cout << "Selecciona: ";
-        cin >> mp[i].codMedioPago;
+            cout << "Seleccione medio de pago: ";
+            cin >> mp[i].codMedioPago;
 
-        while (mp[i].codMedioPago != "EF"
-            && mp[i].codMedioPago != "MP"
-            && mp[i].codMedioPago != "TR"
-            && mp[i].codMedioPago != "TC"
-            && mp[i].codMedioPago != "CT")
-        {
+            while (!esCodigoValido(mp[i].codMedioPago)) {
             cout << "Codigo invalido. Intente de nuevo.\n";
             cin >> mp[i].codMedioPago;
-        }
+            }
+
+            bool repetido = medioDePagoRepetido(mp, i, mp[i].codMedioPago);
+
+            while (repetido) {
+                cout << "El codigo ya fue ingresado. Ingrese uno diferente: ";
+                cin >> mp[i].codMedioPago;
+
+                while (!esCodigoValido(mp[i].codMedioPago)) {
+                    cout << "Codigo invalido. Intente de nuevo.\n";
+                    cin >> mp[i].codMedioPago;
+                }
+
+                repetido = medioDePagoRepetido(mp, i, mp[i].codMedioPago);
+            }
+
             if (mp[i].codMedioPago == "EF") {
                     mp[i].nombreFormaPago = "Efectivo";
                 } else if (mp[i].codMedioPago == "MP") {
@@ -84,31 +99,32 @@ void cargarFormasPago(MedioPago mp[5])
                     mp[i].nombreFormaPago = "Criptomoneda";
                 }
 
-                // falta diferenciar si es interes o descuento (si ingresa -10 es descuento, si ingresa 10 es interes)
-        cout << "Ingrese el descuento o interes para: " << mp[i].nombreFormaPago << endl;
-        cin >> descuentoInteres;
+            cout << "Ingrese el descuento o interes (Negativo para descuento, positivo para interes)" << endl;
+            cin >> descuentoInteres;
 
-        if (descuentoInteres > 0){
-            mp[i].descuento = descuentoInteres;
-            mp[i].interes = 0;
+            while (descuentoInteres < -100){
+                cout << "El descuento no puede exceder el 100%" << endl;
+                cin >> descuentoInteres;
+            }
+
+            if (descuentoInteres < 0) {
+                mp[i].descuento = -descuentoInteres;
+                mp[i].interes = 0;
+            } else {
+                mp[i].descuento = 0;
+                mp[i].interes = descuentoInteres;
+            }
         }
-        else{
-            mp[i].descuento = 0;
-            mp[i].interes = descuentoInteres;
+        for (i = 0; i < 5; i++) {
+            if (mp[i].descuento != 0)
+                cout << "Para el medio: " << mp[i].nombreFormaPago << " se selecciono el medio: " << mp[i].descuento << endl;
+            else{
+                cout << "Para el medio: " << mp[i].nombreFormaPago << " se selecciono el medio: " << mp[i].interes << endl;
+            }
         }
 }
-        system("cls");
 
-        for (i = 0; i < 10; i++) {
-        if (mp[i].descuento != 0)
-        cout << "Para el medio: " << mp[i].nombreFormaPago << " se selecciono el medio: " << mp[i].descuento << endl;
-        else{
-        cout << "Para el medio: " << mp[i].nombreFormaPago << " se selecciono el medio: " << mp[i].interes << endl;
-        }
-        };
-}
-
-void cargarLoteVentas(Producto productos[20], Marca marcas[10], MedioPago mp[5], RecaudacionProducto recaudacionProducto[20])
+void cargarLoteVentas(Producto productos[20], Marca marcas[10], MedioPago mp[5], RecaudacionProducto recaudacionProducto[20], int& productosVendidos)
 {
     int diasVentas[7];
     int nroCompra;
@@ -117,7 +133,6 @@ void cargarLoteVentas(Producto productos[20], Marca marcas[10], MedioPago mp[5],
     int cantidadVendida;
     int codigoCliente;
     int cantidadVentas;
-    int productosCargados = 0;
 
     // Primero cargamos los dias de las ventas
     cargarDiasDeVenta(diasVentas);
@@ -175,46 +190,35 @@ void cargarLoteVentas(Producto productos[20], Marca marcas[10], MedioPago mp[5],
 
             // Agregamos descuento o interes segun el medio de pago que eligio
             if (mp[indiceMP].descuento > 0) {
-                    totalVenta *= (1 - mp[indiceMP].descuento / 100.0);
-                } else if (mp[indiceMP].interes > 0) {
-                    totalVenta *= (1 + mp[indiceMP].interes / 100.0);
-                }
+                totalVenta *= (1 - mp[indiceMP].descuento / 100.0);
+            } else if (mp[indiceMP].interes > 0) {
+                totalVenta *= (1 + mp[indiceMP].interes / 100.0);
+            }
 
+            cout << "Ingrese codigo de cliente" << endl;
             cin >> codigoCliente;
 
-            int indiceRecaudacion = buscarIndiceRecaudacionProducto(recaudacionProducto, codigoProducto, productosCargados);
+            int indiceRecaudacion = buscarIndiceRecaudacionProducto(recaudacionProducto, codigoProducto, productosVendidos);
 
             //Si no existe, lo agregamos
             if (indiceRecaudacion == -1) {
-                recaudacionProducto[productosCargados].codProducto = codigoProducto;
-                recaudacionProducto[productosCargados].nombreProducto = productos[indiceProducto].nombreProducto;
-                recaudacionProducto[productosCargados].cantidadVendida = cantidadVendida;
-                recaudacionProducto[productosCargados].totalRecaudado = cantidadVendida * productos[indiceProducto].precioVenta;
+                recaudacionProducto[productosVendidos].codProducto = codigoProducto;
+                recaudacionProducto[productosVendidos].nombreProducto = productos[indiceProducto].nombreProducto;
+                recaudacionProducto[productosVendidos].cantidadVendida = cantidadVendida;
+                recaudacionProducto[productosVendidos].totalRecaudado = totalVenta;
                 productos[indiceProducto].stockDisp -= cantidadVendida;
-                recaudacionProducto[productosCargados].stockRemanente = productos[indiceProducto].stockDisp;
-                productosCargados++;
+                recaudacionProducto[productosVendidos].stockRemanente = productos[indiceProducto].stockDisp;
+                productosVendidos++;
             // si existe lo modificamos
             } else {
                 recaudacionProducto[indiceRecaudacion].cantidadVendida += cantidadVendida;
-                recaudacionProducto[indiceRecaudacion].totalRecaudado += cantidadVendida * productos[indiceProducto].precioVenta;
+                recaudacionProducto[indiceRecaudacion].totalRecaudado += totalVenta;
                 productos[indiceProducto].stockDisp -= cantidadVendida;
                 recaudacionProducto[indiceRecaudacion].stockRemanente = productos[indiceProducto].stockDisp;
 
             }
-
-            // 2) Porcentaje de ventas por forma de pago -> contador
-
-            // 3) Contador de ventas por marca y forma de pago
-
-            // 4) Productos sin venta sale de recaudacionProducto -> Primero hay que terminar recaudacion producto
-
-            // 5) Contador de clientes, top 10, random 3 ganadores de descuento -> contador
-
-
+        cout << "---------------------------------------------" << endl;
         }
-
-
-
     }
   }
 
