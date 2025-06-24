@@ -20,16 +20,16 @@ struct Producto{
 struct MedioPago{
     string codMedioPago;
     string nombreFormaPago;
-    int porcDescuentoInteres;
+    int interes;
+    int descuento;
 };
 
-struct Venta{
-    int nCompra;
-    Producto codProducto;
-    MedioPago formaPago;
-    int ctidadVendida;
-    int codCliente;
-    int diaVenta;
+struct RecaudacionProducto{
+    int codProducto;
+    string nombreProducto;
+    double totalRecaudado;
+    int cantidadVendida;
+    int stockRemanente;
 };
 
 #endif

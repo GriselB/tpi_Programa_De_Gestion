@@ -7,6 +7,12 @@ using namespace std;
 void cargarNombres(Marca marcas[]);
 void buscarMarcas(Marca marcas[]);
 bool verificarMarcas(Marca marcas[]);
+void cargarDiasDeVenta(int diasVentas[]);
+int obtenerMinimo(int dias[]);
+bool validarDiasConsecutivos(int dias[]);
+int buscarProductoPorCodigoProducto(Producto productos[], int codProducto);
+int buscarIndiceRecaudacionProducto(RecaudacionProducto recaudacionProducto[], int codProducto, int cantidadActual);
+int buscarIndiceMedioPago(MedioPago mp[], int cantidadMedios, string codigo);
 
 #endif
 

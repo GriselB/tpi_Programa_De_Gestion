@@ -81,3 +81,36 @@
 
 1750533175 c:\users\katy\documents\tpi\tpi_programa_de_gestion\tpi_programa_de_gestion\structs.h
 
+1749473706 source:c:\users\rossi\desktop\tipi_programa_de_gestion\main.cpp
+	<iostream>
+	"menu.h"
+
+1749221372 c:\users\rossi\desktop\tipi_programa_de_gestion\menu.h
+
+1750605371 source:c:\users\rossi\desktop\tipi_programa_de_gestion\cargadatos.cpp
+	<iostream>
+	"cargaDatos.h"
+	"funciones.h"
+	"structs.h"
+
+1750605373 c:\users\rossi\desktop\tipi_programa_de_gestion\cargadatos.h
+	"structs.h"
+
+1750715854 c:\users\rossi\desktop\tipi_programa_de_gestion\structs.h
+
+1750714316 c:\users\rossi\desktop\tipi_programa_de_gestion\funciones.h
+	"structs.h"
+
+1750717075 source:c:\users\rossi\desktop\tipi_programa_de_gestion\funciones.cpp
+	<iostream>
+	"funciones.h"
+	"structs.h"
+
+1750714903 source:c:\users\rossi\desktop\tipi_programa_de_gestion\menu.cpp
+	<iostream>
+	"menu.h"
+	"funciones.h"
+	"cargaDatos.h"
+	"structs.h"
+	<vector>
+
